@@ -28,4 +28,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: LegendaryCook
-          path: target/*.jar
+          path: |
+               /home/runner/work
+               target/*.jar
