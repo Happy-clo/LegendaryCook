@@ -1,6 +1,6 @@
 name: LegendaryCook
 main: com.legendaryrealms.cook.LegendaryCook
-version: 2.0.6
+version: 2.0.8
 softdepend:
   - HolographicDisplays
   - ItemsAdder

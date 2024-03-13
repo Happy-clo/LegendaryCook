@@ -4,6 +4,7 @@ import com.legendaryrealms.cook.Data.Cook.Cook;
 import com.legendaryrealms.cook.Data.Cook.CookRecipe;
 import com.legendaryrealms.cook.Utils.MsgUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -24,6 +25,7 @@ public class CooksManager {
                 YamlConfiguration yml=YamlConfiguration.loadConfiguration(file);
                 Cook data=new Cook(cook);
 
+                data.setMaterial(Material.getMaterial(yml.getString("display.material","APPLE")));
                 data.setName(MsgUtils.msg(yml.getString("display.name","")));
                 data.setData(yml.getInt("display.data",0));
                 data.setModel(yml.getInt("display.model",0));
