@@ -32,7 +32,7 @@ public class CookPot {
         this.loc=loc;
         cache.put(p,this);
         List<String> texts= new ArrayList<>(Config.pot_text);
-        texts.replaceAll(x -> x.replace("%cook%","无").replace("%progress%","0%"));
+        texts.replaceAll(x -> x.replace("%cook%","无").replace("%hot%","0").replace("%progress%","0%"));
         this.holo=new PotHolo(loc,texts);
         this.potBlock=new PotBlock(p,loc);
 
@@ -51,7 +51,7 @@ public class CookPot {
         }
         List<String> texts= new ArrayList<>(Config.pot_text);
         String finalProgress = progress;
-        texts.replaceAll(x -> x.replace("%cook%",cook).replace("%progress%", finalProgress +"%"));
+        texts.replaceAll(x -> x.replace("%cook%",cook).replace("hot",game.getHot()+"").replace("%progress%", finalProgress +"%"));
         holo.update(texts);
 
     }

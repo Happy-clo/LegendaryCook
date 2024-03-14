@@ -1,6 +1,7 @@
 package com.legendaryrealms.cook;
 
 import com.legendaryrealms.cook.Data.Cook.Cook;
+import com.legendaryrealms.cook.Data.Cook.CookPot;
 import com.legendaryrealms.cook.Data.PlayerData;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
@@ -17,7 +18,7 @@ public class LegendaryCookPlaceholder extends PlaceholderExpansion {
     }
 
     public String getVersion() {
-        return "2.0.1";
+        return "2.0.8";
     }
 
     public String onRequest(OfflinePlayer p, String params) {
@@ -48,6 +49,15 @@ public class LegendaryCookPlaceholder extends PlaceholderExpansion {
        else if (params.equalsIgnoreCase("level")){
            PlayerData data=PlayerData.getPlayerData(p.getPlayer());
            return ""+data.getCookLevel();
+       }
+       else if (params.equalsIgnoreCase("hot")) {
+           if (p.isOnline()) {
+               CookPot cookPot = CookPot.getCookPot(p.getPlayer());
+               if (cookPot.isInGame()) {
+                   return cookPot.getGame().getHot()+"";
+               }
+           }
+           return "0";
        }
         return "null";
     }

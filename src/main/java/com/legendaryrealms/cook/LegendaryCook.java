@@ -28,6 +28,7 @@ public class LegendaryCook extends JavaPlugin {
     private ItemUtils itemUtils;
     private Hooks hooks;
     private LootsManager lootsManager=null;
+    private LegendaryCookPlaceholder legendaryCookPlaceholder;
     @Override
     public void onLoad() {
         plugin=this;
@@ -53,7 +54,10 @@ public class LegendaryCook extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new CategorizesMenuEvent(), LegendaryCook.getInstance());
         Bukkit.getPluginManager().registerEvents(new MainMenuEvent(), LegendaryCook.getInstance());
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI"))
-        {new LegendaryCookPlaceholder().register();}
+        {
+            legendaryCookPlaceholder = new LegendaryCookPlaceholder();
+            legendaryCookPlaceholder.register();
+        }
     }
 
 
@@ -61,6 +65,9 @@ public class LegendaryCook extends JavaPlugin {
     public void onDisable() {
         PlayerData.saveAllOnline();
         CookPot.removeAll();
+        if (legendaryCookPlaceholder != null) {
+            legendaryCookPlaceholder.unregister();
+        }
     }
 
 

@@ -32,6 +32,7 @@ public class PotBlock {
             case "default":
                 Block b=loc.getBlock();
                 b.setType(Material.getMaterial(Config.pot_block_value));
+                b.setMetadata("LegendaryCook",new FixedMetadataValue(LegendaryCook.getInstance(),"LegendaryCook"));
                 this.b=b;
                 cache_default.put(b,this);
                 break;
